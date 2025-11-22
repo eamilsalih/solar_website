@@ -10,8 +10,8 @@ const isPreview = process.env.IS_PREVIEW ? true : false
 export default defineConfig({
   base: '/solar_website/',
   define: {
-    __BASE_PATH__: JSON.stringify(base),
-    __IS_PREVIEW__: JSON.stringify(isPreview),
+    __BASE_PATH__: base,
+    __IS_PREVIEW__: isPreview,
   },
   plugins: [
     react(),
@@ -70,7 +70,7 @@ export default defineConfig({
   ],
   build: {
     sourcemap: true,
-    outDir: 'out',
+    outDir: 'dist',
   },
   resolve: {
     alias: {
