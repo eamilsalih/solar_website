@@ -4,14 +4,17 @@ import { resolve } from 'node:path'
 import AutoImport from 'unplugin-auto-import/vite'
 
 const base = process.env.BASE_PATH || '/'
-const isPreview = process.env.IS_PREVIEW  ? true : false;
+const isPreview = process.env.IS_PREVIEW ? true : false
+
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/solar_website/',
   define: {
-   __BASE_PATH__: JSON.stringify(base),
-   __IS_PREVIEW__: JSON.stringify(isPreview)
+    __BASE_PATH__: JSON.stringify(base),
+    __IS_PREVIEW__: JSON.stringify(isPreview),
   },
-  plugins: [react(),
+  plugins: [
+    react(),
     AutoImport({
       imports: [
         {
@@ -65,7 +68,6 @@ export default defineConfig({
       dts: true,
     }),
   ],
-  base,
   build: {
     sourcemap: true,
     outDir: 'out',
@@ -77,6 +79,5 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    host: '0.0.0.0',
   }
 })
